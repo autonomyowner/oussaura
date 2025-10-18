@@ -142,7 +142,7 @@ export const JeanCapLanding = (): JSX.Element => {
               🔥 عرض حصري 🔥
             </h1>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 chroma-text-white">
-              قبعة جينز بريميوم
+              قبعات جينز
             </h2>
             <button
               onClick={scrollToForm}
