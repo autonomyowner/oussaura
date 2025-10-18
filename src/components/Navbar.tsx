@@ -11,8 +11,6 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
-  { label: 'الرئيسية', href: '/' },
-  { label: 'الخدمات', href: '/services' },
   { label: '🔥 Casquette Jean', href: '/casquette-jean' },
 ]
 
