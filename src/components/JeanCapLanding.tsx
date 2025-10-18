@@ -18,6 +18,7 @@ const wilayasData = getAllWilayasSorted()
 export const JeanCapLanding = (): JSX.Element => {
   const [selectedCap1, setSelectedCap1] = useState(caps[0])
   const [selectedCap2, setSelectedCap2] = useState(caps[1])
+  const [deliveryType, setDeliveryType] = useState<'home' | 'office'>('home')
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -68,12 +69,14 @@ export const JeanCapLanding = (): JSX.Element => {
     }
 
     const total = 2500 + deliveryPrice
+    const deliveryTypeText = deliveryType === 'home' ? '🏠 التوصيل للمنزل' : '🏢 التوصيل للمكتب'
     const message = `
 ━━━━━━━━━━━━━━━━━━━━
 🎩 *طلب جديد - CASQUETTE JEAN*
 ━━━━━━━━━━━━━━━━━━━━
 
 📍 *معلومات التوصيل:*
+نوع التوصيل: ${deliveryTypeText}
 الولاية: ${formData.wilaya}
 البلدية: ${formData.commune}
 العنوان: ${formData.address}
@@ -316,6 +319,36 @@ export const JeanCapLanding = (): JSX.Element => {
                   maxLength={10}
                 />
                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
+
+              <div>
+                <label className="block text-lg font-semibold mb-3">
+                  نوع التوصيل:
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setDeliveryType('home')}
+                    className={`px-4 py-3 rounded-lg border-2 transition-all font-medium ${
+                      deliveryType === 'home'
+                        ? 'bg-yellow-400 border-yellow-400 text-black'
+                        : 'bg-[#0a0a0a] border-[#1a1a1a] text-white hover:border-yellow-400/50'
+                    }`}
+                  >
+                    🏠 التوصيل للمنزل
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDeliveryType('office')}
+                    className={`px-4 py-3 rounded-lg border-2 transition-all font-medium ${
+                      deliveryType === 'office'
+                        ? 'bg-yellow-400 border-yellow-400 text-black'
+                        : 'bg-[#0a0a0a] border-[#1a1a1a] text-white hover:border-yellow-400/50'
+                    }`}
+                  >
+                    🏢 التوصيل للمكتب
+                  </button>
+                </div>
               </div>
 
               <div>
