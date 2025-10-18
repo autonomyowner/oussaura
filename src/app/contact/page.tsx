@@ -11,12 +11,12 @@ export default function ContactPage(): JSX.Element {
             Contact
           </p>
           <h1 className="mt-4 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Discutons de votre projet
+            Discutons de votre projet ou urgence
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-600">
-            Partagez vos besoins, objectifs et inspirations. Nous reviendrons
-            vers vous rapidement avec une proposition detaillee et un devis
-            personnalise.
+            Partagez vos besoins, dimensions et contraintes. Nous reviendrons
+            vers vous rapidement avec un devis détaillé ou interviendrons en urgence
+            selon votre situation.
           </p>
         </div>
 

@@ -12,34 +12,63 @@ type ServiceCard = {
 
 const services: ServiceCard[] = [
   {
-    id: 'websites',
-    title: 'Sites Vitrine',
+    id: 'rideaux',
+    title: 'Rideaux métalliques & volets roulants',
     description:
-      'Sites web professionnels et elegants pour presenter votre entreprise avec impact et credibilite.',
-    highlight: 'Presence professionnelle',
+      'Pose, motorisation, dépannage et déblocage. Lames pleines, micro-perforées, grilles cobra. Contrats de maintenance disponibles.',
+    highlight: 'Sécurité 24/7',
     image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    href: '/services#websites',
+      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+    href: '/services#rideaux',
   },
   {
-    id: 'ecommerce',
-    title: 'E-commerce',
+    id: 'portes',
+    title: 'Portes blindées',
     description:
-      'Boutiques en ligne optimisees pour vendre vos produits 24/7 avec paiement securise.',
-    highlight: 'Vente en ligne',
+      'Installation certifiée, serrures multipoints, remplacement, renforts et habillages pour une sécurité maximale.',
+    highlight: 'Haute sécurité',
     image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
-    href: '/services#ecommerce',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+    href: '/services#portes',
   },
   {
-    id: 'custom',
-    title: 'Sur Mesure',
+    id: 'alu-pvc',
+    title: 'Portes & fenêtres ALU/PVC',
     description:
-      'Solutions web personnalisees adaptees a vos besoins specifiques et votre secteur d activite.',
-    highlight: 'Solution unique',
+      'Sur-mesure, isolation thermique & phonique. Oscillo-battant, coulissant, double/triple vitrage pour un confort optimal.',
+    highlight: 'Isolation pro',
     image:
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
-    href: '/services#custom',
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=800&q=80',
+    href: '/services#alu-pvc',
+  },
+  {
+    id: 'vitrines',
+    title: 'Vitrines commerciales',
+    description:
+      'Verre sécurit anti-effraction, remplacement de casse, étanchéité et joints pour protéger votre commerce.',
+    highlight: 'Protection commerce',
+    image:
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    href: '/services#vitrines',
+  },
+  {
+    id: 'enseignes',
+    title: 'Enseignes lumineuses & néons',
+    description:
+      'Création, fabrication et pose. LED, caissons, lettres relief, néon flexible. Mise aux normes et maintenance.',
+    highlight: 'Visibilité maximale',
+    image: '/projects/1.jpg',
+    href: '/services#enseignes',
+  },
+  {
+    id: 'autres',
+    title: 'Garde-corps & stores',
+    description:
+      'Garde-corps acier/ALU/verre int. & ext., stores bannes, zip, intérieurs avec toiles techniques et motorisation.',
+    highlight: 'Aménagement complet',
+    image:
+      'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80',
+    href: '/services#autres',
   },
 ]
 
@@ -52,15 +81,15 @@ export const ServicesPreview = (): JSX.Element => {
             Nos Services
           </p>
           <h2 className="mt-5 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Des solutions web adaptees a chaque entreprise
+            Solutions de fermeture & signalétique
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600">
-            Nous creons des sites web performants et modernes qui donnent vie a votre presence en ligne
-            et assurent une experience optimale pour vos visiteurs.
+            Nous sécurisons et valorisons vos espaces avec des installations professionnelles,
+            un service de dépannage 24/7 et une maintenance préventive de qualité.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}

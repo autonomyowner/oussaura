@@ -2,9 +2,9 @@
 
 export const PricingSection = (): JSX.Element => {
   const handleContactClick = (): void => {
-    const phoneNumber = '+213797339451'
+    const phoneNumber = '+33753969259'
     const message =
-      'Bonjour! Je souhaite obtenir un devis pour mon projet de site web.'
+      'Bonjour! Je souhaite obtenir un devis pour vos services de fermeture et sécurité.'
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message,
     )}`
@@ -18,42 +18,41 @@ export const PricingSection = (): JSX.Element => {
           Tarification
         </p>
         <h2 className="mt-4 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-          Des devis personnalises selon vos besoins
+          Des devis clairs selon vos besoins
         </h2>
         <p className="mt-6 text-base leading-relaxed text-neutral-600">
-          Chaque projet est unique. Nous construisons des offres modulables en
-          fonction de vos besoins, des fonctionnalites requises et de votre
-          budget.
+          Chaque projet est unique. Nous établissons des devis personnalisés en
+          fonction de vos besoins, des dimensions et de votre budget.
         </p>
       </div>
 
       <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
         {[
           {
-            title: 'Site Vitrine',
-            description: 'Presence professionnelle pour votre entreprise en ligne.',
+            title: 'Dépannage Express',
+            description: 'Intervention rapide 24/7 pour déblocage et sécurisation.',
             points: [
-              'Design moderne et responsive',
-              'Optimisation SEO incluse',
-              'Hebergement et domaine 1 an',
+              'Déblocage rideau/volet',
+              'Sécurisation vitrine/porte',
+              'Intervention rapide',
             ],
           },
           {
-            title: 'E-commerce',
-            description: 'Boutique en ligne complete pour vendre vos produits.',
+            title: 'Installation',
+            description: 'Pose et remplacement de tous types de fermetures.',
             points: [
-              'Gestion produits et stocks',
-              'Paiement en ligne securise',
-              'Tableau de bord complet',
+              'Rideaux métalliques',
+              'Portes blindées',
+              'Fenêtres ALU/PVC',
             ],
           },
           {
-            title: 'Sur Mesure',
-            description: 'Solution personnalisee adaptee a vos besoins specifiques.',
+            title: 'Maintenance',
+            description: 'Contrats de maintenance préventive pour éviter les pannes.',
             points: [
-              'Fonctionnalites personnalisees',
-              'Integration systemes existants',
-              'Formation et support continu',
+              'Visites régulières',
+              'Réglages préventifs',
+              'Intervention prioritaire',
             ],
           },
         ].map((offer) => (
@@ -81,16 +80,15 @@ export const PricingSection = (): JSX.Element => {
 
       <div className="mt-16 text-center">
         <h3 className="text-2xl font-elegant font-semibold text-neutral-900">
-          Parlons de votre projet
+          Discutons de votre projet
         </h3>
         <p className="mt-4 text-sm leading-relaxed text-neutral-600">
-          Nous ecoutons vos besoins, analysons vos objectifs et composons une
-          proposition detaillee pour garantir un site web qui depasse vos
-          attentes.
+          Nous écoutons vos besoins, prenons les mesures nécessaires et établissons
+          un devis détaillé avec matériaux, délais et garanties incluses.
         </p>
         <button
           onClick={handleContactClick}
-          className="mt-7 rounded-full bg-neutral-900 px-10 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-colors duration-200 hover:bg-neutral-700"
+          className="mt-7 rounded-full bg-[#0B3C49] px-10 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-colors duration-200 hover:bg-[#18A999]"
           type="button"
         >
           Demander un devis

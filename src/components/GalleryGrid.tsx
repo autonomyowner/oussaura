@@ -14,51 +14,91 @@ type GalleryItem = {
 const galleryItems: GalleryItem[] = [
   {
     id: '1',
-    title: 'Gran Turismo',
-    category: 'Transport de luxe',
-    image: '/projects/gran-turismo.webp',
+    title: 'Installation rideau métallique',
+    category: 'Rideau métallique',
+    image: '/projects/1.jpg',
     description:
-      'Chauffeur prive haut de gamme. Discretion, confort et excellence pour vos trajets sur la Cote d Azur et en Italie du Nord.',
-  },
-  {
-    id: '2',
-    title: 'El Ghella',
-    category: 'Agriculture',
-    image: '/projects/elghella.webp',
-    description:
-      'Produits agricoles et services. Alliance d innovation et de nature pour un avenir agricole durable.',
+      'Pose de rideau métallique motorisé pour commerce à Paris. Installation professionnelle avec finitions soignées.',
   },
   {
     id: '3',
-    title: 'Parfumerie Allouani',
-    category: 'Luxe & Beaute',
-    image: '/projects/allouani.webp',
+    title: 'Porte blindée certifiée',
+    category: 'Porte blindée',
+    image: '/projects/3.jpg',
     description:
-      'Parfums de luxe. Elegance, raffinement et senteurs exclusives venues du monde entier.',
+      'Installation de porte blindée haute sécurité avec serrure multipoints. Protection maximale pour votre domicile.',
   },
   {
     id: '4',
-    title: 'Planete Nutrition',
-    category: 'Sante & Bien-etre',
-    image: '/projects/nutrition.webp',
+    title: 'Vitrine commerciale',
+    category: 'Vitrine',
+    image: '/projects/4.jpg',
     description:
-      'Sante & bien-etre. Supplements de qualite pour performance, equilibre et vitalite au quotidien.',
+      'Vitrine en verre sécurit anti-effraction pour boutique. Étanchéité parfaite et design moderne.',
   },
   {
     id: '5',
-    title: 'Triomphe',
-    category: 'Decoration',
-    image: '/projects/triomphe.webp',
+    title: 'Enseigne lumineuse LED',
+    category: 'Enseigne',
+    image: '/projects/5.jpg',
     description:
-      'Decoration interieure. Pieces raffinees et modernes pour sublimer vos espaces de vie.',
+      'Création et installation d\'enseigne lumineuse LED sur-mesure. Visibilité maximale jour et nuit.',
   },
   {
     id: '6',
-    title: 'El Wakil Immobilier',
-    category: 'Immobilier',
-    image: '/projects/elwakil.png',
+    title: 'Volet roulant motorisé',
+    category: 'Volet roulant',
+    image: '/projects/6.jpg',
     description:
-      'Immobilier de prestige. Expertise locale et service premium pour des biens d exception en Algerie.',
+      'Installation de volet roulant avec motorisation et télécommande. Confort et sécurité au quotidien.',
+  },
+  {
+    id: '7',
+    title: 'Grille métallique cobra',
+    category: 'Grille',
+    image: '/projects/7.jpg',
+    description:
+      'Grille métallique cobra pour vitrine. Sécurité et visibilité pour votre commerce.',
+  },
+  {
+    id: '8',
+    title: 'Fenêtres ALU',
+    category: 'Menuiserie ALU',
+    image: '/projects/8.jpg',
+    description:
+      'Fenêtres en aluminium double vitrage. Isolation thermique et phonique optimale.',
+  },
+  {
+    id: '9',
+    title: 'Porte de garage',
+    category: 'Porte garage',
+    image: '/projects/9.jpg',
+    description:
+      'Porte de garage sectionnelle motorisée. Gain de place et facilité d\'utilisation.',
+  },
+  {
+    id: '10',
+    title: 'Rideau micro-perforé',
+    category: 'Rideau métallique',
+    image: '/projects/10.jpg',
+    description:
+      'Rideau métallique micro-perforé permettant la visibilité tout en assurant la sécurité.',
+  },
+  {
+    id: '11',
+    title: 'Installation complète commerce',
+    category: 'Projet complet',
+    image: '/projects/11.jpg',
+    description:
+      'Projet complet : rideau métallique, vitrine et enseigne pour nouvelle boutique à Paris.',
+  },
+  {
+    id: 'whatsapp',
+    title: 'Enseigne néon personnalisée',
+    category: 'Enseigne néon',
+    image: '/projects/WhatsApp Image 2025-10-17 at 20.50.20_8c2a1551.jpg',
+    description:
+      'Enseigne néon LED flexible sur-mesure. Design moderne et éclairage personnalisé.',
   },
 ]
 
@@ -140,17 +180,17 @@ export const GalleryGrid = (): JSX.Element => {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 quality={85}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/80">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/90">
                   {item.category}
                 </p>
                 <p className="text-lg font-elegant font-semibold text-white">
                   {item.title}
                 </p>
-                <p className="text-sm text-white/80">{item.description}</p>
-                <span className="mt-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/70 underline underline-offset-4">
-                  Voir le projet
+                <p className="text-sm text-white/90 line-clamp-2">{item.description}</p>
+                <span className="mt-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#18A999] underline underline-offset-4">
+                  Voir en détail
                 </span>
               </div>
             </div>
@@ -159,8 +199,8 @@ export const GalleryGrid = (): JSX.Element => {
       </div>
 
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 overflow-y-auto">
-          <div className="relative w-full max-w-4xl my-8 rounded-3xl border border-neutral-700 bg-neutral-900/80 p-4 sm:p-6 backdrop-blur">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 overflow-y-auto">
+          <div className="relative w-full max-w-4xl my-8 rounded-3xl border border-neutral-700 bg-neutral-900/90 p-4 sm:p-6 backdrop-blur">
             <div className="flex justify-between gap-4 text-xs uppercase tracking-[0.3em] text-neutral-300">
               <button
                 type="button"
@@ -175,9 +215,9 @@ export const GalleryGrid = (): JSX.Element => {
                   type="button"
                   onClick={handlePrevious}
                   className="underline underline-offset-4 hover:text-white transition-colors"
-                  aria-label="Image precedente"
+                  aria-label="Image précédente"
                 >
-                  Precedent
+                  Précédent
                 </button>
                 <button
                   type="button"
@@ -203,7 +243,7 @@ export const GalleryGrid = (): JSX.Element => {
               </div>
             </div>
             <div className="mt-4 sm:mt-6 rounded-2xl bg-neutral-900/70 px-4 sm:px-6 py-4 sm:py-5 text-neutral-100">
-              <p className="text-xs uppercase tracking-[0.3em] text-neutral-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#18A999]">
                 {selectedImage.category}
               </p>
               <p className="mt-2 sm:mt-3 text-xl sm:text-2xl font-elegant font-semibold">

@@ -3,105 +3,102 @@
 import { useEffect } from 'react'
 import { trackMetaEvent } from '@/lib/metaPixel'
 
-const phoneNumber = '213797339451'
-const displayPhoneNumber = '+213 797 339 451'
+const phoneNumber = '+33753969259'
+const displayPhoneNumber = '07 53 96 92 59'
 
 const createWhatsAppLink = (subject: string): string => {
-  const message = `Bonjour! Je souhaite reserver l'offre ${subject} de SiteDZ Store. Pouvez-vous me guider pour finaliser ma commande ?`
+  const message = `Bonjour! Je souhaite obtenir un devis pour ${subject}. Pouvez-vous me contacter ?`
   return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 }
 
-type Plan = {
+type PricingRange = {
   name: string
-  tagline: string
+  description: string
   price: string
-  delivery: string
-  idealFor: string
-  highlights: string[]
+  details: string[]
   whatsappUrl: string
 }
 
-const plans: Plan[] = [
+const pricingRanges: PricingRange[] = [
   {
-    name: 'Site vitrine moderne',
-    tagline: 'FR/AR + RTL',
-    price: '12 500 DA',
-    delivery: 'Livraison 72h',
-    idealFor: 'PME, professions liberales et artisans',
-    highlights: [
-      'Site vitrine (1 à 3 pages) avec design personnalisé et responsive',
-      'Intégration de contenu de base (textes, images, logos)',
-      'Formulaire de contact simple avec boîte mail automatique',
-      'Hébergement 1 an inclus + nom de domaine gratuit',
-      'SSL gratuit + support technique 1 mois après livraison',
-      'Processus de vente automatisé: client commande → notification email',
+    name: 'Dépannage / Petite réparation',
+    description: 'Intervention rapide pour déblocage et réparations simples.',
+    price: '149 € - 800 € HT',
+    details: [
+      'Déblocage rideau métallique bloqué',
+      'Réparation volet roulant',
+      'Sécurisation d\'urgence',
+      'Déplacement selon zone',
+      'Intervention 24/7 disponible',
     ],
+    whatsappUrl: createWhatsAppLink('un dépannage urgent'),
   },
   {
-    name: 'E-commerce propulse',
-    tagline: 'Pret pour la croissance',
-    price: '45 000 DA',
-    delivery: 'Livraison 10 jours ouvres',
-    idealFor: 'Boutiques en ligne, franchises et retail',
-    highlights: [
-      'Site vitrine (1 à 3 pages) + fonctionnalités e-commerce complètes',
-      'Design personnalisé et responsive + intégration contenu de base',
-      'Formulaire de contact + système de commande automatisé',
-      'Hébergement 3 ans inclus + nom de domaine .com 3 ans gratuit',
-      'SSL gratuit + support technique 1 mois après livraison',
-      'Processus de vente automatisé: client commande → notification email',
+    name: 'Remplacement standard',
+    description: 'Pose et remplacement de fermetures standard.',
+    price: '800 € - 2 500 € HT',
+    details: [
+      'Remplacement volet roulant',
+      'Installation rideau métallique manuel/motorisé',
+      'Fenêtres ALU/PVC standard',
+      'Matériaux et pose inclus',
+      'Garantie incluse',
     ],
+    whatsappUrl: createWhatsAppLink('un remplacement de fermeture'),
   },
   {
-    name: 'SaaS sur-mesure',
-    tagline: 'Abonnement & automation',
-    price: '95 000 DA',
-    delivery: 'Livraison 21 jours',
-    idealFor: 'Startups, edtech, plateformes B2B',
-    highlights: [
-      'Interface utilisateur premium adaptee a votre secteur',
-      'Gestion abonnements, paiements locaux & internationaux',
-      'Workflows automatisee (emails, WhatsApp, notifications)',
-      'Tableau de bord analytics + export reporting',
-      'Maintenance evolutive + 25 mises a jour/mois',
-      'Processus de vente automatisé: client commande → notification email',
+    name: 'Installation moyenne',
+    description: 'Projets d\'installation de taille moyenne.',
+    price: '2 500 € - 6 000 € HT',
+    details: [
+      'Porte blindée certifiée',
+      'Vitrine commerciale moyenne',
+      'Enseigne lumineuse LED',
+      'Installation complète',
+      'Garantie décennale',
     ],
-  },
-].map((plan) => ({
-  ...plan,
-  whatsappUrl: createWhatsAppLink(plan.name),
-}))
-
-const processSteps = [
-  {
-    title: 'Choisissez votre offre',
-    description:
-      'Selectionnez la formule qui correspond a votre objectif (site vitrine, e-commerce ou SaaS).',
+    whatsappUrl: createWhatsAppLink('une installation moyenne'),
   },
   {
-    title: 'Envoyez votre validation',
-    description:
-      'Confirmez par WhatsApp ou email et partagez vos contenus, inspirations et contraintes.',
-  },
-  {
-    title: 'Regler l acompte design (2 000 DA)',
-    description:
-      'Des reception de l acompte, nous reservons votre planning et envoyons la check-list projet.',
-  },
-  {
-    title: 'Recevez maquette et logo',
-    description:
-      'Nous livrons un mockup sur-mesure + une proposition de logo adaptee a votre activite.',
-  },
-  {
-    title: 'Build et ajustements',
-    description:
-      'Apres votre validation, nous developpons le site complet, testons et corrigeons les derniers details.',
+    name: 'Projet complexe',
+    description: 'Enseignes complexes, façades complètes ou multi-lots.',
+    price: '6 000 €+ HT',
+    details: [
+      'Enseigne complexe sur-mesure',
+      'Façade complète commerce',
+      'Multi-lots immeuble',
+      'Étude personnalisée',
+      'Suivi de chantier',
+    ],
+    whatsappUrl: createWhatsAppLink('un projet complexe'),
   },
 ]
 
-const headerWhatsAppUrl = createWhatsAppLink('Tarifs')
-const depositWhatsAppUrl = createWhatsAppLink('Acompte design 2000 DA')
+const processSteps = [
+  {
+    title: 'Visite & cotes',
+    description:
+      'Prise de mesures sur site ou envoi de photos avec dimensions pour établir un devis précis.',
+  },
+  {
+    title: 'Devis détaillé',
+    description:
+      'Proposition avec matériaux, délais, garanties et conditions d\'intervention clairement détaillés.',
+  },
+  {
+    title: 'Planification',
+    description:
+      'Organisation de l\'intervention selon vos disponibilités ou intervention immédiate en cas d\'urgence.',
+  },
+  {
+    title: 'Réalisation',
+    description:
+      'Pose professionnelle ou réparation avec finitions soignées, nettoyage du chantier et réception.',
+  },
+]
+
+const headerWhatsAppUrl = createWhatsAppLink('vos services')
+const urgenceWhatsAppUrl = createWhatsAppLink('une urgence')
 
 export const PricingPageContent = (): JSX.Element => {
   useEffect(() => {
@@ -111,25 +108,28 @@ export const PricingPageContent = (): JSX.Element => {
     })
   }, [])
 
+  const handlePhoneClick = (): void => {
+    trackMetaEvent('Contact', { source: 'pricing_phone' })
+    window.open('tel:0753969259', '_self')
+  }
+
   return (
     <div className="relative isolate bg-white/90">
       <div className="absolute inset-0 -z-10 opacity-70">
-        <div className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_top,_rgba(17,24,39,0.12),_transparent_70%)]" />
+        <div className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_top,_rgba(11,60,73,0.12),_transparent_70%)]" />
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6">
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            Tarifs 2025
+            Tarifs & formules
           </p>
           <h1 className="text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Boostez Votre Présence sociale, engagez votre audience.    Votre transformation Digitale, étape par étape.
+            Devis clair avant intervention
           </h1>
           <p className="text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Vous avez besoin d&apos;un site qui genere des ventes maintenant. Chaque
-            offre inclut votre Meta Pixel, une experience utilisateur optimisee
-            pour la conversion et un accompagnement direct via WhatsApp afin de
-            lancer sans friction les discussions commerciales.
+            Les prix varient selon les dimensions, matériaux et contraintes chantier.
+            Devis gratuit et forfaits urgence 24/7 disponibles.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
@@ -141,77 +141,68 @@ export const PricingPageContent = (): JSX.Element => {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-neutral-700"
+              className="inline-flex items-center justify-center rounded-full bg-[#0B3C49] px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-[#18A999]"
             >
-              Parler ventes sur WhatsApp
+              Recevoir un devis en 2h
             </a>
-            <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-              Hotline WhatsApp {displayPhoneNumber}
-            </div>
+            <button
+              onClick={handlePhoneClick}
+              className="inline-flex items-center justify-center rounded-full border-2 border-[#18A999] px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#0B3C49] transition-colors duration-200 hover:bg-[#18A999] hover:text-white"
+            >
+              Urgence : {displayPhoneNumber}
+            </button>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-3">
-          {plans.map((plan) => (
+        <div className="grid gap-8 lg:grid-cols-2">
+          {pricingRanges.map((range) => (
             <div
-              key={plan.name}
+              key={range.name}
               className="relative flex h-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white/95 p-8 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="space-y-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-amber-700">
-                      {plan.tagline}
-                    </p>
-                    <h2 className="mt-3 text-2xl font-elegant font-semibold text-neutral-900">
-                      {plan.name}
-                    </h2>
-                  </div>
-                  <div className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] uppercase tracking-[0.3em] text-amber-700">
-                    {plan.delivery}
-                  </div>
+                <div>
+                  <h2 className="text-2xl font-elegant font-semibold text-neutral-900">
+                    {range.name}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                    {range.description}
+                  </p>
                 </div>
-                <div className="text-4xl font-semibold text-neutral-900">
-                  {plan.price}
+                <div className="text-3xl font-semibold text-[#0B3C49]">
+                  {range.price}
                 </div>
-                <p className="text-sm uppercase tracking-[0.3em] text-neutral-500">
-                  {plan.idealFor}
-                </p>
                 <ul className="space-y-3 pt-2">
-                  {plan.highlights.map((highlight) => (
+                  {range.details.map((detail) => (
                     <li
-                      key={highlight}
+                      key={detail}
                       className="flex items-start gap-3 text-sm leading-relaxed text-neutral-600"
                     >
-                      <span className="mt-[3px] inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-900 text-[10px] font-semibold uppercase tracking-[0.2em] text-white">
-                        +
+                      <span className="mt-[3px] inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#18A999] text-[10px] font-semibold text-white">
+                        ✓
                       </span>
-                      <span>{highlight}</span>
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="mt-8 flex flex-col gap-3">
                 <a
-                  href={plan.whatsappUrl}
+                  href={range.whatsappUrl}
                   onClick={() =>
                     trackMetaEvent('Lead', {
-                      source: 'pricing_plan_whatsapp',
-                      content_name: plan.name,
+                      source: 'pricing_range_whatsapp',
+                      content_name: range.name,
                     })
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-600 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-amber-500"
+                  className="inline-flex items-center justify-center rounded-full bg-[#0B3C49] px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-[#18A999]"
                 >
-                  Reserver sur WhatsApp
+                  Demander un devis
                 </a>
-                <p className="text-xs text-neutral-500">
-                  Nous repondons en quelques minutes pour securiser votre
-                  projet et partager les prochaines etapes.
-                </p>
               </div>
             </div>
           ))}
@@ -221,91 +212,66 @@ export const PricingPageContent = (): JSX.Element => {
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-neutral-200 bg-white/80 p-10 shadow-sm">
           <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">
-            Processus client
+            Processus
           </p>
           <h2 className="mt-4 text-3xl font-elegant font-semibold text-neutral-900">
-            De la reservation au lancement sans friction
+            De la demande à la réalisation
           </h2>
-          <div className="mt-10 overflow-x-auto pb-4">
-            <div className="flex min-w-full snap-x snap-mandatory gap-6 lg:grid lg:grid-cols-5 lg:gap-5">
-              {processSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="group relative min-w-[240px] flex-1 snap-center rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-lg lg:min-w-0"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900 text-sm font-semibold uppercase tracking-[0.2em] text-white">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    <div className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
-                      Etape {index + 1}
-                    </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <div
+                key={step.title}
+                className="group relative rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#18A999] hover:shadow-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B3C49] text-sm font-semibold text-white">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
-                  <div className="mt-6 text-lg font-semibold text-neutral-900">
-                    {step.title}
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                    {step.description}
-                  </p>
-                  {index < processSteps.length - 1 && (
-                    <div className="absolute right-[-20px] top-1/2 hidden -translate-y-1/2 lg:flex">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="text-neutral-300 transition-colors duration-300 group-hover:text-neutral-900"
-                      >
-                        <path
-                          d="M5 12h14M13 6l6 6-6 6"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  )}
                 </div>
-              ))}
-            </div>
+                <div className="mt-6 text-lg font-semibold text-neutral-900">
+                  {step.title}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-8 text-center shadow-sm">
-          <p className="text-xs uppercase tracking-[0.35em] text-amber-600">
-            Valider votre projet
+        <div className="rounded-3xl border border-[#18A999] bg-gradient-to-br from-[#0B3C49] to-[#18A999] p-8 text-center shadow-sm">
+          <p className="text-xs uppercase tracking-[0.35em] text-white/80">
+            Urgence 24/7
           </p>
-          <h3 className="mt-3 text-2xl font-elegant font-semibold text-neutral-900">
-            Reglez l&apos;acompte design de 2 000 DA pour lancer la maquette
+          <h3 className="mt-3 text-2xl font-elegant font-semibold text-white">
+            Besoin d&apos;une intervention immédiate ?
           </h3>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-neutral-700">
-            Cet acompte couvre la creation de votre mockup + une proposition de
-            logo. Il est deduit du montant final et declenche directement la
-            production de votre design.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/90">
+            Notre équipe est disponible 24h/24 et 7j/7 pour toutes vos urgences de
+            fermeture et sécurité à Paris et en Île-de-France.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={depositWhatsAppUrl}
+              href={urgenceWhatsAppUrl}
               onClick={() =>
-                trackMetaEvent('Purchase', {
-                  value: 2000,
-                  currency: 'DZD',
-                  source: 'pricing_deposit',
+                trackMetaEvent('Contact', {
+                  source: 'pricing_urgence_whatsapp',
                 })
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-neutral-700"
+              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#0B3C49] transition-colors duration-200 hover:bg-white/90"
             >
-              Confirmer sur WhatsApp
+              Contacter maintenant
             </a>
-            <span className="text-[11px] uppercase tracking-[0.3em] text-neutral-500">
-              Appelez-nous {displayPhoneNumber}
-            </span>
+            <button
+              onClick={handlePhoneClick}
+              className="inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-200 hover:bg-white hover:text-[#0B3C49]"
+            >
+              Appeler : {displayPhoneNumber}
+            </button>
           </div>
         </div>
       </section>
@@ -313,37 +279,37 @@ export const PricingPageContent = (): JSX.Element => {
       <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-neutral-200 bg-white/70 p-10 text-center shadow-sm">
           <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">
-            Pourquoi nous choisir
+            Compris dans nos prestations
           </p>
           <h2 className="mt-4 text-3xl font-elegant font-semibold text-neutral-900">
-            Chaque projet est pilote pour la conversion et le suivi client
+            Service complet et garanties
           </h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="space-y-3">
               <div className="text-lg font-semibold text-neutral-900">
-                Meta Pixel inclus
+                Prise de cotes & conseil
               </div>
               <p className="text-sm leading-relaxed text-neutral-600">
-                Campagnes Meta pretes a l&apos;emploi: audiences de remarketing et
-                suivi des conversions sans perdre les visiteurs.
+                Visite technique gratuite avec conseils personnalisés pour choisir
+                les meilleures solutions.
               </p>
             </div>
             <div className="space-y-3">
               <div className="text-lg font-semibold text-neutral-900">
-                Parcours WhatsApp
+                Pose soignée
               </div>
               <p className="text-sm leading-relaxed text-neutral-600">
-                Chaque appel a l&apos;action dirige vos prospects vers WhatsApp pour
-                finaliser la vente meme sans passerelle de paiement locale.
+                Installation professionnelle avec finitions propres et nettoyage
+                du chantier après intervention.
               </p>
             </div>
             <div className="space-y-3">
               <div className="text-lg font-semibold text-neutral-900">
-                Support continu
+                Garantie & SAV
               </div>
               <p className="text-sm leading-relaxed text-neutral-600">
-                Maintenance mensuelle incluse, ajustements rapides et accompagnement
-                marketing pour optimiser vos campagnes.
+                Garantie sur nos prestations avec service après-vente réactif et
+                contrats de maintenance disponibles.
               </p>
             </div>
           </div>
@@ -353,15 +319,14 @@ export const PricingPageContent = (): JSX.Element => {
       <section className="mx-auto max-w-6xl px-4 pb-28 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6 rounded-3xl border border-neutral-800 bg-neutral-900 px-8 py-12 text-center text-white sm:px-12">
           <p className="text-xs uppercase tracking-[0.4em] text-white/70">
-            Pret a lancer ?
+            Prêt à démarrer ?
           </p>
           <h2 className="text-3xl font-elegant font-semibold sm:text-4xl">
-            Transformons vos visiteurs en clients en moins de 7 jours
+            Sécurisez vos espaces dès aujourd&apos;hui
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-white/70">
-            Envoyez-nous un message sur WhatsApp et nous livrons un plan
-            d&apos;action detaille: calendrier, maquettes, integration du Pixel et
-            scripts de vente pour votre equipe.
+            Contactez-nous par WhatsApp ou téléphone pour obtenir un devis gratuit
+            et personnalisé. Intervention rapide garantie sur Paris et Île-de-France.
           </p>
           <a
             href={headerWhatsAppUrl}
@@ -372,12 +337,12 @@ export const PricingPageContent = (): JSX.Element => {
             }
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-neutral-900 transition-colors duration-200 hover:bg-amber-200"
+            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-neutral-900 transition-colors duration-200 hover:bg-[#18A999] hover:text-white"
           >
             Ouvrir WhatsApp maintenant
           </a>
           <p className="text-[12px] uppercase tracking-[0.3em] text-white/60">
-            Disponible 7j/7 - Support {displayPhoneNumber}
+            Disponible 24/7 - {displayPhoneNumber}
           </p>
         </div>
       </section>

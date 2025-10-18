@@ -5,34 +5,34 @@ type ValueItem = {
 
 const values: ValueItem[] = [
   {
-    title: 'Excellence',
+    title: 'Réactivité 24/7',
     description:
-      'Une exigence constante dans le choix des technologies, du design et des fonctionnalites.',
+      'Dépannages, déblocages et sécurisation immédiate. Urgences et délais tenus.',
   },
   {
-    title: 'Innovation',
+    title: 'Qualité pro',
     description:
-      'Des solutions modernes qui respectent votre identite et l esprit de votre entreprise.',
+      'Matériaux normés ALU, PVC, acier, motorisations fiables et finitions propres.',
   },
   {
     title: 'Transparence',
     description:
-      'Un dialogue clair a chaque etape pour avancer sereinement ensemble.',
+      'Devis clair, conseils honnêtes, pas de surprises sur les tarifs.',
   },
   {
-    title: 'Reactivite',
+    title: 'Satisfaction',
     description:
-      'Une organisation precise pour garantir des livraisons rapides et un support immediat.',
+      'Suivi après-pose, maintenance préventive et service client à l\'écoute.',
   },
   {
-    title: 'Personnalisation',
+    title: 'Garantie & SAV',
     description:
-      'Chaque site web est concu sur mesure a partir de vos besoins et objectifs.',
+      'Mise en service, conseils techniques et intervention rapide en cas de problème.',
   },
   {
     title: 'Expertise',
     description:
-      'Une equipe qualifiee qui veille a ce que votre projet web soit parfaitement realise.',
+      'Équipe qualifiée avec plusieurs années d\'expérience sur tous types d\'installations.',
   },
 ]
 
@@ -42,14 +42,14 @@ export const ValuesSection = (): JSX.Element => {
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            Notre approche
+            Nos engagements
           </p>
           <h2 className="mt-5 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Des valeurs qui guident chaque projet
+            Des valeurs qui guident chaque intervention
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-600">
-            Innovation, qualite et sens du service structurent notre facon
-            de creer des sites web. Nous cultivons des relations solides
+            Réactivité, qualité et transparence structurent notre façon
+            de sécuriser vos espaces. Nous cultivons des relations solides
             et durables avec nos clients.
           </p>
         </div>
@@ -72,22 +72,22 @@ export const ValuesSection = (): JSX.Element => {
 
         <div className="mt-20 rounded-3xl border border-neutral-200 bg-white/85 px-6 py-12 text-center shadow-sm sm:px-12">
           <h3 className="text-2xl font-elegant font-semibold text-neutral-900">
-            Notre engagement
+            Notre promesse
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600">
-            Assurer une experience fluide et respectueuse de vos delais. Nous
-            orchestrons le developpement, le design et le deploiement avec la
-            meme attention que pour la phase de conception.
+            Assurer une intervention rapide et respectueuse de vos contraintes. Nous
+            gérons la pose, le dépannage et la maintenance avec la même attention
+            que pour la première installation.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-6 text-sm uppercase tracking-[0.3em] text-neutral-500 sm:grid-cols-3">
             <div className="rounded-2xl border border-neutral-200 bg-white/80 px-6 py-6">
-              Qualite
+              Sécurité
             </div>
             <div className="rounded-2xl border border-neutral-200 bg-white/80 px-6 py-6">
-              Service
+              Fiabilité
             </div>
             <div className="rounded-2xl border border-neutral-200 bg-white/80 px-6 py-6">
-              Satisfaction
+              Réactivité
             </div>
           </div>
         </div>

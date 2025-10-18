@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { PricingPageContent } from '@/components/PricingPageContent'
 
 export const metadata: Metadata = {
-  title: 'Tarifs 2025 - Creations de sites web | SiteDZ Store',
+  title: 'Tarifs - Rideaux métalliques, portes blindées & fermetures | Walid Fermeture',
   description:
-    'Decouvrez nos offres web pretes a convertir : site vitrine, e-commerce et SaaS sur mesure. Livraison rapide, maintenance incluse et accompagnement WhatsApp immediat.',
+    'Découvrez nos tarifs pour rideaux métalliques, portes blindées, volets roulants et enseignes lumineuses à Paris. Devis gratuit et forfaits urgence 24/7 disponibles.',
   alternates: {
     canonical: '/pricing',
   },

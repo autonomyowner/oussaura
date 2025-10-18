@@ -7,14 +7,14 @@ export default function ServicesPage(): JSX.Element {
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            Prestations
+            Nos Services
           </p>
           <h1 className="mt-4 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Nos services
+            Services de fermeture & signalétique
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-600">
-            Explorez nos solutions web pour concevoir, developper et lancer votre
-            site internet avec une approche professionnelle et personnalisee.
+            Explorez nos solutions complètes de fermeture, sécurité et signalétique
+            pour sécuriser et valoriser vos espaces à Paris et en Île-de-France.
           </p>
         </div>
 

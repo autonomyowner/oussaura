@@ -4,44 +4,53 @@ import { useState } from 'react'
 import { DualRangeSlider } from './ui/DualRangeSlider'
 
 const getBudgetCategory = (budget: number): string => {
-  if (budget <= 15000) {
-    return 'Site Vitrine'
+  if (budget <= 800) {
+    return 'Dépannage / Petite réparation'
   }
-  if (budget <= 35000) {
-    return 'Site E-commerce'
+  if (budget <= 2500) {
+    return 'Remplacement volet/rideau standard'
   }
-  return 'Startup Level'
+  if (budget <= 6000) {
+    return 'Porte blindée / vitrine moyenne'
+  }
+  return 'Enseigne complexe / façade / multi-lots'
 }
 
 const getCategoryDescription = (budget: number): string => {
-  if (budget <= 15000) {
-    return 'Site web professionnel avec design moderne et responsive, parfait pour présenter votre entreprise.'
+  if (budget <= 800) {
+    return 'Intervention rapide pour déblocage de rideau métallique, réparation de volet roulant ou sécurisation d\'urgence.'
   }
-  if (budget <= 35000) {
-    return 'Boutique en ligne complète avec paiement sécurisé, gestion des produits et interface d\'administration.'
+  if (budget <= 2500) {
+    return 'Pose ou remplacement de volet roulant, rideau métallique manuel/motorisé, ou fenêtres ALU/PVC standard.'
   }
-  return 'Solution web avancée avec fonctionnalités personnalisées, intégrations complexes et architecture évolutive.'
+  if (budget <= 6000) {
+    return 'Installation de porte blindée certifiée, vitrine commerciale moyenne, ou enseigne lumineuse LED.'
+  }
+  return 'Enseigne complexe sur-mesure, façade complète de commerce, ou installation multi-lots pour immeuble.'
 }
 
 const getCategoryColor = (budget: number): string => {
-  if (budget <= 15000) {
-    return 'text-blue-600'
+  if (budget <= 800) {
+    return 'text-[#18A999]'
   }
-  if (budget <= 35000) {
+  if (budget <= 2500) {
+    return 'text-[#0B3C49]'
+  }
+  if (budget <= 6000) {
     return 'text-purple-600'
   }
   return 'text-emerald-600'
 }
 
 export const BudgetSlider = (): JSX.Element => {
-  const [budget, setBudget] = useState<number[]>([0, 50000])
+  const [budget, setBudget] = useState<number[]>([0, 5000])
 
   const handleValueChange = (value: number[]): void => {
     setBudget(value)
   }
 
   const formatCurrency = (value: number): string => {
-    return `${value.toLocaleString('fr-DZ')} DA`
+    return `${value.toLocaleString('fr-FR')} €`
   }
 
   const maxBudget = budget[1]
@@ -53,10 +62,10 @@ export const BudgetSlider = (): JSX.Element => {
     <div className="rounded-3xl border border-neutral-200 bg-white/90 p-8 shadow-sm">
       <div className="mb-8">
         <h3 className="text-2xl font-elegant font-semibold text-neutral-900">
-          Estimez votre budget
+          Estimation rapide (slider en €)
         </h3>
         <p className="mt-2 text-sm text-neutral-600">
-          Ajustez le curseur pour voir ce que votre budget peut vous offrir
+          Ajustez le curseur pour voir une estimation selon votre budget
         </p>
       </div>
 
@@ -65,8 +74,8 @@ export const BudgetSlider = (): JSX.Element => {
           value={budget}
           onValueChange={handleValueChange}
           min={0}
-          max={500000}
-          step={1000}
+          max={15000}
+          step={100}
           className="mb-4"
           label={(value) => (
             <span className="text-xs font-semibold text-neutral-700">
@@ -102,40 +111,49 @@ export const BudgetSlider = (): JSX.Element => {
           </p>
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-3 text-center">
+        <div className="mt-6 grid grid-cols-2 gap-3 text-center">
           <div
             className={`rounded-lg p-3 ${
-              maxBudget <= 15000
-                ? 'bg-blue-50 border-2 border-blue-300'
+              maxBudget <= 800
+                ? 'bg-[#18A999]/10 border-2 border-[#18A999]'
                 : 'bg-neutral-50 border border-neutral-200'
             }`}
           >
-            <p className="text-xs font-medium text-neutral-600">Vitrine</p>
-            <p className="mt-1 text-xs text-neutral-500">0 - 15K DA</p>
+            <p className="text-xs font-medium text-neutral-600">Dépannage</p>
+            <p className="mt-1 text-xs text-neutral-500">300 - 800 €</p>
           </div>
           <div
             className={`rounded-lg p-3 ${
-              maxBudget > 15000 && maxBudget <= 35000
+              maxBudget > 800 && maxBudget <= 2500
+                ? 'bg-[#0B3C49]/10 border-2 border-[#0B3C49]'
+                : 'bg-neutral-50 border border-neutral-200'
+            }`}
+          >
+            <p className="text-xs font-medium text-neutral-600">Remplacement</p>
+            <p className="mt-1 text-xs text-neutral-500">800 - 2 500 €</p>
+          </div>
+          <div
+            className={`rounded-lg p-3 ${
+              maxBudget > 2500 && maxBudget <= 6000
                 ? 'bg-purple-50 border-2 border-purple-300'
                 : 'bg-neutral-50 border border-neutral-200'
             }`}
           >
-            <p className="text-xs font-medium text-neutral-600">E-commerce</p>
-            <p className="mt-1 text-xs text-neutral-500">15K - 35K DA</p>
+            <p className="text-xs font-medium text-neutral-600">Installation</p>
+            <p className="mt-1 text-xs text-neutral-500">2 500 - 6 000 €</p>
           </div>
           <div
             className={`rounded-lg p-3 ${
-              maxBudget > 35000
+              maxBudget > 6000
                 ? 'bg-emerald-50 border-2 border-emerald-300'
                 : 'bg-neutral-50 border border-neutral-200'
             }`}
           >
-            <p className="text-xs font-medium text-neutral-600">Startup</p>
-            <p className="mt-1 text-xs text-neutral-500">35K - 500K DA</p>
+            <p className="text-xs font-medium text-neutral-600">Complexe</p>
+            <p className="mt-1 text-xs text-neutral-500">6 000 €+</p>
           </div>
         </div>
       </div>
     </div>
   )
 }
-

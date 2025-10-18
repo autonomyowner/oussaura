@@ -8,7 +8,7 @@ import { trackMetaEvent } from '@/lib/metaPixel'
 export const HeroSection = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [typedText, setTypedText] = useState<string>('')
-  const fullText = 'Sites web modernes et performants pour votre entreprise en Algerie'
+  const fullText = 'Sécuriser & valoriser vos espaces à Paris'
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setIsVisible(true), 100)
@@ -32,9 +32,9 @@ export const HeroSection = (): JSX.Element => {
   }, [isVisible])
 
   const handleContactClick = (): void => {
-    const phoneNumber = '+213797339451'
+    const phoneNumber = '+33753969259'
     const message =
-      'Bonjour! Je suis interesse(e) par vos services de creation de sites web.'
+      'Bonjour! Je souhaite obtenir un devis pour vos services de fermeture et sécurité.'
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message,
     )}`
@@ -42,12 +42,17 @@ export const HeroSection = (): JSX.Element => {
     window.open(whatsappUrl, '_blank')
   }
 
+  const handleUrgenceClick = (): void => {
+    trackMetaEvent('Contact', { source: 'hero_urgence_phone' })
+    window.open('tel:0753969259', '_self')
+  }
+
   return (
     <section className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=2069&q=80"
-          alt="Decoration evennementielle elegante"
+          src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=2069&q=80"
+          alt="Fermetures métalliques et sécurité"
           fill
           priority
           className="object-cover"
@@ -64,7 +69,7 @@ export const HeroSection = (): JSX.Element => {
           }`}
         >
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            Agence Web Professionnelle
+            Walid Fermeture
           </p>
 
           <h1 className="text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl lg:text-6xl">
@@ -73,34 +78,35 @@ export const HeroSection = (): JSX.Element => {
           </h1>
 
           <p className="text-lg leading-relaxed text-neutral-600 sm:text-xl">
-            SITEDZ Store est votre agence web de confiance en Algerie. Nous creons des sites web modernes, rapides et professionnels pour developper votre entreprise en ligne. Specialises dans le marche algerien avec des solutions adaptees a vos besoins locaux.
+            Pose, dépannage et maintenance 24/7 : rideaux métalliques, portes blindées, volets roulants, ALU/PVC, vitrines, enseignes lumineuses & néons. Boutiques, bureaux, immeubles et restaurants.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <button
               onClick={handleContactClick}
-              className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition-all duration-200 hover:bg-neutral-700"
+              className="inline-flex items-center justify-center rounded-full bg-[#0B3C49] px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition-all duration-200 hover:bg-[#18A999]"
               type="button"
             >
-              Prendre contact
+              Demander un devis
             </button>
 
-            <Link
-              href="/gallery"
-              className="inline-flex items-center justify-center rounded-full border border-neutral-400 px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-neutral-700 transition-all duration-200 hover:border-neutral-700 hover:text-neutral-900"
+            <button
+              onClick={handleUrgenceClick}
+              className="inline-flex items-center justify-center rounded-full border-2 border-[#18A999] px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#0B3C49] transition-all duration-200 hover:bg-[#18A999] hover:text-white"
+              type="button"
             >
-              Voir nos realisations
-            </Link>
+              Urgence 24/7 : 07 53 96 92 59
+            </button>
           </div>
 
           <div className="flex flex-col gap-4 border-t border-neutral-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-sm uppercase tracking-[0.3em] text-neutral-500">
-              Partout en Algerie
+              Intervention 24/7
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-neutral-600">
-              <span className="whitespace-nowrap">Design moderne</span>
-              <span className="whitespace-nowrap">SEO optimise</span>
-              <span className="whitespace-nowrap">Support dedie</span>
+              <span className="whitespace-nowrap">Matériaux pro</span>
+              <span className="whitespace-nowrap">Garantie & SAV</span>
+              <span className="whitespace-nowrap">Délai 4h</span>
             </div>
           </div>
         </div>

@@ -6,15 +6,15 @@ export default function GalleryPage(): JSX.Element {
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            Galerie
+            Réalisations
           </p>
           <h1 className="mt-4 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-            Nos realisations
+            Nos réalisations
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-600">
-            Un apercu de nos projets web : sites vitrine, boutiques e-commerce,
-            portfolios et solutions sur mesure concus pour repondre aux besoins
-            de nos clients.
+            Découvrez nos installations de rideaux métalliques, portes blindées,
+            volets roulants, vitrines commerciales, enseignes lumineuses et autres
+            projets de fermeture et signalétique à Paris et en Île-de-France.
           </p>
         </div>
 

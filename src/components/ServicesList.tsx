@@ -14,117 +14,135 @@ type Service = {
 
 const services: Service[] = [
   {
-    id: 'websites',
-    title: 'Sites Vitrine Professionnels',
+    id: 'rideaux',
+    title: 'Rideaux métalliques & volets roulants',
     description:
-      'Sites web elegants et modernes pour presenter votre entreprise, vos services et renforcer votre credibilite en ligne.',
+      'Installation, motorisation, dépannage et maintenance de rideaux métalliques et volets roulants pour commerces et particuliers.',
     features: [
-      'Design moderne et responsive adapte a tous les ecrans',
-      'Optimisation SEO pour etre visible sur Google',
-      'Formulaires de contact et integration WhatsApp',
-      'Galerie photos et videos pour vos realisations',
-      'Hebergement securise et nom de domaine inclus',
+      'Pose de rideaux métalliques manuels et motorisés',
+      'Lames pleines, micro-perforées, grilles cobra',
+      'Déblocage et réparation 24/7',
+      'Motorisation et automatisation',
+      'Contrats de maintenance préventive',
     ],
     image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    signature: 'Presence professionnelle',
+      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+    signature: 'Sécurité 24/7',
     whatsappMessage:
-      'Bonjour! Je suis intéressé(e) par un Site Vitrine Professionnel. J\'aimerais avoir plus d\'informations et un devis personnalisé.',
+      'Bonjour! Je suis intéressé(e) par vos services de rideaux métalliques et volets roulants. J\'aimerais obtenir un devis.',
   },
   {
-    id: 'ecommerce',
-    title: 'Boutiques E-commerce',
+    id: 'portes',
+    title: 'Portes blindées',
     description:
-      'Solutions de vente en ligne completes pour transformer votre entreprise et vendre vos produits 24h/24 et 7j/7.',
+      'Installation certifiée de portes blindées avec serrures multipoints pour une sécurité maximale de votre domicile ou commerce.',
     features: [
-      'Catalogue produits avec gestion des stocks',
-      'Panier et processus de commande optimise',
-      'Integration paiement en ligne securise (CCP, Baridi Mob)',
-      'Tableau de bord pour gerer vos commandes',
-      'Options de livraison et suivi des expeditions',
+      'Installation certifiée et sécurisée',
+      'Serrures multipoints haute sécurité',
+      'Remplacement et renforts',
+      'Habillages sur-mesure',
+      'Mise aux normes assurance',
     ],
     image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
-    signature: 'Vente en ligne',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+    signature: 'Haute sécurité',
     whatsappMessage:
-      'Bonjour! Je souhaite créer une Boutique E-commerce pour vendre mes produits en ligne. Pourriez-vous me fournir plus de détails et un devis?',
+      'Bonjour! Je souhaite installer une porte blindée. Pourriez-vous me fournir plus de détails et un devis?',
   },
   {
-    id: 'landing',
-    title: 'Pages de Destination (Landing Pages)',
+    id: 'alu-pvc',
+    title: 'Portes & fenêtres ALU/PVC',
     description:
-      'Pages web optimisees pour convertir vos visiteurs en clients, ideales pour vos campagnes marketing et publicites.',
+      'Menuiserie ALU et PVC sur-mesure avec isolation thermique et phonique optimale pour votre confort.',
     features: [
-      'Design attractif centre sur la conversion',
-      'Appels a l action strategiquement places',
-      'Formulaires optimises pour capturer des leads',
-      'Integration avec vos outils marketing',
-      'Chargement ultra-rapide pour maximiser les conversions',
+      'Fabrication sur-mesure',
+      'Isolation thermique & phonique',
+      'Oscillo-battant, coulissant, fixe',
+      'Double et triple vitrage',
+      'Garantie décennale',
     ],
     image:
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
-    signature: 'Performance marketing',
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=800&q=80',
+    signature: 'Isolation pro',
     whatsappMessage:
-      'Bonjour! Je suis intéressé(e) par la création d\'une Landing Page pour ma campagne marketing. Pouvez-vous me donner plus d\'informations?',
+      'Bonjour! Je suis intéressé(e) par des portes et fenêtres ALU/PVC. J\'aimerais avoir un devis personnalisé.',
   },
   {
-    id: 'portfolio',
-    title: 'Sites Portfolio',
+    id: 'vitrines',
+    title: 'Vitrines commerciales',
     description:
-      'Mettez en valeur votre travail et vos competences avec un portfolio professionnel qui impressionne vos clients potentiels.',
+      'Installation et réparation de vitrines en verre sécurit anti-effraction pour protéger votre commerce.',
     features: [
-      'Galeries photos et videos haute qualite',
-      'Presentation de vos projets et realisations',
-      'Section a propos et competences',
-      'Formulaire de contact et devis en ligne',
-      'Design unique qui reflete votre style',
+      'Verre sécurit et trempé',
+      'Protection anti-effraction',
+      'Remplacement de vitres cassées',
+      'Étanchéité et joints',
+      'Intervention rapide',
     ],
     image:
-      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80',
-    signature: 'Mise en valeur',
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    signature: 'Protection commerce',
     whatsappMessage:
-      'Bonjour! J\'aimerais créer un Site Portfolio professionnel pour mettre en valeur mon travail. Pouvez-vous m\'aider avec un devis?',
+      'Bonjour! J\'ai besoin de services pour vitrines commerciales. Pouvez-vous me donner plus d\'informations?',
   },
   {
-    id: 'restaurant',
-    title: 'Sites pour Restaurants',
+    id: 'enseignes',
+    title: 'Enseignes lumineuses & néons',
     description:
-      'Sites web specialises pour restaurants, cafes et services alimentaires avec menu en ligne et systeme de reservation.',
+      'Création, fabrication et installation d\'enseignes lumineuses LED et néons pour maximiser la visibilité de votre commerce.',
     features: [
-      'Menu interactif avec photos appetissantes',
-      'Systeme de reservation de tables en ligne',
-      'Integration commande et livraison',
-      'Galerie photos de votre etablissement',
-      'Avis clients et reseaux sociaux integres',
+      'Création et design sur-mesure',
+      'Enseignes LED et néon flexible',
+      'Caissons lumineux et lettres relief',
+      'Mise aux normes électriques',
+      'Maintenance et dépannage',
+    ],
+    image: '/projects/1.jpg',
+    signature: 'Visibilité maximale',
+    whatsappMessage:
+      'Bonjour! Je cherche à créer une enseigne lumineuse pour mon commerce. J\'aimerais discuter des options disponibles.',
+  },
+  {
+    id: 'garde-corps',
+    title: 'Garde-corps',
+    description:
+      'Installation de garde-corps en acier, aluminium ou verre pour intérieur et extérieur, conformes aux normes de sécurité.',
+    features: [
+      'Acier, aluminium, verre',
+      'Intérieur et extérieur',
+      'Conformes aux normes NF',
+      'Design moderne ou classique',
+      'Installation professionnelle',
     ],
     image:
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    signature: 'Gastronomie digitale',
+      'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80',
+    signature: 'Sécurité normée',
     whatsappMessage:
-      'Bonjour! Je cherche à créer un Site Web pour mon restaurant/café avec menu en ligne et système de réservation. J\'aimerais discuter des options disponibles.',
+      'Bonjour! J\'ai besoin d\'installer des garde-corps. Pouvez-vous me fournir un devis?',
   },
   {
-    id: 'custom',
-    title: 'Solutions Sur Mesure',
+    id: 'stores',
+    title: 'Stores',
     description:
-      'Projets web personnalises adaptes a vos besoins specifiques, quelle que soit la complexite de votre demande.',
+      'Installation de stores bannes, zip et intérieurs avec toiles techniques et motorisation pour votre confort.',
     features: [
-      'Analyse detaillee de vos besoins et objectifs',
-      'Architecture et fonctionnalites personnalisees',
-      'Integration avec vos systemes existants',
-      'Formation complete a l utilisation',
-      'Support technique et maintenance continues',
+      'Stores bannes pour terrasses',
+      'Stores zip et verticaux',
+      'Stores intérieurs',
+      'Toiles techniques résistantes',
+      'Motorisation et automatisation',
     ],
-    image: '/sulittions.png',
-    signature: 'Solution unique',
+    image:
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80',
+    signature: 'Confort & protection',
     whatsappMessage:
-      'Bonjour! J\'ai un projet web personnalisé avec des besoins spécifiques. J\'aimerais discuter de mes exigences et obtenir un devis sur mesure.',
+      'Bonjour! Je suis intéressé(e) par l\'installation de stores. J\'aimerais obtenir plus d\'informations.',
   },
 ]
 
 export const ServicesList = (): JSX.Element => {
   const handleWhatsAppClick = (message: string): void => {
-    const phoneNumber = '+213797339451'
+    const phoneNumber = '+33753969259'
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
@@ -160,7 +178,7 @@ export const ServicesList = (): JSX.Element => {
                 {service.signature}
               </span>
               <span className="text-xs uppercase tracking-[0.35em] text-neutral-400">
-                SiteDZ Store
+                Walid Fermeture
               </span>
             </div>
             </div>
@@ -177,7 +195,7 @@ export const ServicesList = (): JSX.Element => {
 
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                Compris dans la prestation
+                Compris dans nos prestations
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600">
                 {service.features.map((feature) => (
@@ -190,7 +208,7 @@ export const ServicesList = (): JSX.Element => {
               <button
                 type="button"
                 onClick={() => handleWhatsAppClick(service.whatsappMessage)}
-                className="rounded-full border border-neutral-400 px-8 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-neutral-700 transition-colors duration-200 hover:border-neutral-700 hover:text-neutral-900"
+                className="rounded-full bg-[#0B3C49] px-8 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-colors duration-200 hover:bg-[#18A999]"
               >
                 Demander un devis
               </button>

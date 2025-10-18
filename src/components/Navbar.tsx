@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 type NavItem = {
@@ -11,10 +12,10 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: 'Accueil', href: '/' },
-  { label: 'Galerie', href: '/gallery' },
+  { label: 'Réalisations', href: '/gallery' },
   { label: 'Services', href: '/services' },
   { label: 'Tarifs', href: '/pricing' },
-  { label: 'A Propos', href: '/about' },
+  { label: 'À propos', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -52,14 +53,25 @@ export const Navbar = (): JSX.Element => {
         <div className="flex h-16 items-center justify-between md:h-20">
           <Link
             href="/"
-            className="flex flex-col leading-tight text-neutral-900 transition-colors duration-200 hover:text-amber-700"
+            className="flex items-center gap-3 leading-tight text-neutral-900 transition-colors duration-200 hover:text-[#18A999]"
           >
-            <span className="text-xl font-semibold tracking-wide uppercase">
-              SiteDZ Store
-            </span>
-            <span className="text-xs font-light text-neutral-500">
-              Agence Web en Algerie
-            </span>
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#0B3C49] flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Walid Fermeture Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-semibold tracking-wide uppercase">
+                Walid Fermeture
+              </span>
+              <span className="text-xs font-light text-neutral-500">
+                Sécurité & signalétique 24/7
+              </span>
+            </div>
           </Link>
 
           <div className="hidden items-center space-x-7 md:flex">

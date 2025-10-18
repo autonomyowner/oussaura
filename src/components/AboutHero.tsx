@@ -8,38 +8,37 @@ export const AboutHero = (): JSX.Element => {
           <div className="space-y-8">
             <div>
               <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-                A propos
+                À propos
               </p>
               <h1 className="mt-5 text-4xl font-elegant font-semibold text-neutral-900 sm:text-5xl">
-                SiteDZ Store cultive l excellence digitale
+                Walid Fermeture – Paris
               </h1>
               <p className="mt-4 text-base leading-relaxed text-neutral-600">
-                Basee en Algerie, SiteDZ Store cree des sites web modernes et performants
-                qui transforment votre presence en ligne. Nous donnons vie a vos projets
-                digitaux grace a un design soigne, des technologies modernes et une expertise
-                adaptee au marche algerien.
+                Spécialiste fermeture & signalétique pour professionnels et particuliers. Notre équipe
+                intervient dans tout Paris et IDF pour sécuriser, rénover et valoriser vos espaces :
+                rideaux métalliques, portes blindées, volets roulants, ALU/PVC, vitrines, garde-corps,
+                enseignes lumineuses & néons.
               </p>
             </div>
 
             <div className="grid gap-8">
               <div>
                 <h2 className="text-lg font-semibold text-neutral-900">
-                  Notre mission
+                  Notre expertise
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                  Depuis plusieurs annees, nous aidons les entreprises algeriennes
-                  a reussir en ligne avec des sites web professionnels, rapides et
-                  optimises pour le marche local.
+                  Depuis plusieurs années, nous accompagnons les commerces et particuliers
+                  à Paris pour sécuriser leurs espaces avec des installations professionnelles
+                  et un service de maintenance fiable.
                 </p>
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-neutral-900">
-                  Notre promesse
+                  Notre engagement
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                  Livrer des sites web de qualite professionnelle, du premier brief
-                  au lancement final, pour une presence en ligne sans compromis et
-                  parfaitement adaptee a vos besoins.
+                  Intervenir rapidement 24/7, utiliser des matériaux de qualité professionnelle,
+                  et assurer un suivi après-pose avec garantie et SAV pour votre tranquillité.
                 </p>
               </div>
             </div>
@@ -47,10 +46,10 @@ export const AboutHero = (): JSX.Element => {
             <div className="grid grid-cols-3 gap-6 border-t border-neutral-200 pt-6">
               <div>
                 <p className="text-3xl font-elegant font-semibold text-neutral-900">
-                  50+
+                  300+
                 </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.35em] text-neutral-500">
-                  Projets
+                  Interventions
                 </p>
               </div>
               <div>
@@ -66,7 +65,7 @@ export const AboutHero = (): JSX.Element => {
                   24/7
                 </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.35em] text-neutral-500">
-                  Support
+                  Dispo
                 </p>
               </div>
             </div>
@@ -76,8 +75,8 @@ export const AboutHero = (): JSX.Element => {
             <div className="relative overflow-hidden rounded-[32px] border border-neutral-200 bg-white/80 shadow-lg">
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-                  alt="Equipe SiteDZ Store"
+                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+                  alt="Équipe Walid Fermeture"
                   fill
                   className="object-cover"
                 />
@@ -86,10 +85,10 @@ export const AboutHero = (): JSX.Element => {
             </div>
             <div className="absolute -bottom-8 left-1/2 w-60 -translate-x-1/2 rounded-3xl border border-neutral-200 bg-white/95 px-6 py-5 text-center shadow-lg">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">
-                Expertise technique
+                Expertise pro
               </p>
               <p className="mt-3 text-sm text-neutral-600">
-                Technologies modernes et design sur mesure pour chaque projet web.
+                Matériaux normés et finitions soignées pour chaque installation.
               </p>
             </div>
           </div>

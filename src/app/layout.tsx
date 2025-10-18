@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import Image from 'next/image'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
@@ -18,45 +19,45 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'SiteDZ Store - Agence Web en Algerie',
+  title: 'Walid Fermeture – Rideaux métalliques, portes blindées & volets roulants à Paris (24/7)',
   description:
-    'SITEDZ Store est votre agence web de confiance en Algerie. Nous creons des sites web modernes, rapides et professionnels pour developper votre entreprise en ligne. Specialises dans le marche algerien avec des solutions adaptees a vos besoins locaux.',
+    'Pose, dépannage et maintenance de rideaux métalliques, portes blindées, volets roulants, ALU/PVC, vitrines et enseignes lumineuses à Paris. Intervention 24/7. Devis gratuit au 07 53 96 92 59.',
   keywords:
-    'agence web algerie, creation site web, developpement web, site internet algerie, web design, ecommerce algerie, sites professionnels',
-  authors: [{ name: 'SiteDZ Store' }],
-  creator: 'SiteDZ Store',
-  publisher: 'SiteDZ Store',
+    'rideaux métalliques paris, portes blindées paris, volets roulants paris, enseignes lumineuses paris, dépannage 24/7, vitrines paris, fermeture métallique, porte alu pvc, néons paris',
+  authors: [{ name: 'Walid Fermeture' }],
+  creator: 'Walid Fermeture',
+  publisher: 'Walid Fermeture',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.sitedz.store'),
+  metadataBase: new URL('https://www.walidfermeture.fr'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'SiteDZ Store - Agence Web en Algerie',
+    title: 'Walid Fermeture – Sécurité & signalétique à Paris',
     description:
-      'SITEDZ Store est votre agence web de confiance en Algerie. Nous creons des sites web modernes, rapides et professionnels pour developper votre entreprise en ligne.',
-    url: 'https://www.sitedz.store',
-    siteName: 'SiteDZ Store',
+      'Pose, dépannage et maintenance de rideaux métalliques, portes blindées, volets roulants, ALU/PVC, vitrines et enseignes lumineuses à Paris. Intervention 24/7.',
+    url: 'https://www.walidfermeture.fr',
+    siteName: 'Walid Fermeture',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SiteDZ Store - Agence Web en Algerie',
+        alt: 'Walid Fermeture – Sécurité & signalétique à Paris',
       },
     ],
-    locale: 'fr_DZ',
+    locale: 'fr_FR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SiteDZ Store - Agence Web en Algerie',
+    title: 'Walid Fermeture – Sécurité & signalétique à Paris',
     description:
-      'SITEDZ Store est votre agence web de confiance en Algerie. Nous creons des sites web modernes, rapides et professionnels pour developper votre entreprise en ligne.',
+      'Pose, dépannage et maintenance de rideaux métalliques, portes blindées, volets roulants, ALU/PVC, vitrines et enseignes lumineuses à Paris. Intervention 24/7.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -88,48 +89,76 @@ export default function RootLayout({
         <MetaPixel />
         <Navbar />
         <main className="pt-20 md:pt-24 pb-20">{children}</main>
-        <footer className="bg-slate-900 text-white py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex flex-col items-center md:items-start gap-2">
-                <p className="text-sm">
-                  Copyright 2025 SiteDZ Store - Agence Web en Algerie
-                </p>
-                <a
-                  href="/privacy"
-                  className="text-sm text-gray-400 hover:text-white transition-colors underline"
-                >
-                  Privacy Policy
-                </a>
+        <footer className="bg-slate-900 text-white py-12">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#18A999] flex-shrink-0">
+                    <Image
+                      src="/logo.png"
+                      alt="Walid Fermeture Logo"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold">Walid Fermeture</h3>
+                </div>
+                <p className="text-sm text-gray-400 mb-2">Paris, France • 24/7</p>
+                <p className="text-sm text-gray-400">SIRET : 988 499 182 00018</p>
               </div>
-              <div className="flex items-center gap-6">
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Contact</h3>
+                <p className="text-sm text-gray-400 mb-2">
+                  <a href="tel:0753969259" className="hover:text-white transition-colors">
+                    07 53 96 92 59
+                  </a>
+                </p>
+                <p className="text-sm text-gray-400">
+                  <a href="mailto:oualidataouli4@gmail.com" className="hover:text-white transition-colors">
+                    oualidataouli4@gmail.com
+                  </a>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Liens légaux</h3>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="/privacy"
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    Mentions légales
+                  </a>
+                  <a
+                    href="/privacy"
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    Politique de confidentialité
+                  </a>
+                  <a
+                    href="/privacy"
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    CGV
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-gray-700 pt-6 text-center">
+              <p className="text-sm text-gray-400 leading-relaxed">
+                by{' '}
                 <a
-                  href="https://www.instagram.com/site.dz.store/"
+                  href="https://www.sitedz.store"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-primary-400 transition-colors text-sm"
-                  aria-label="Instagram"
-                >
-                  Instagram
-                </a>
-                <a
-                  href="https://www.facebook.com/sitedz.store/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-primary-400 transition-colors text-sm"
-                  aria-label="Facebook"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://www.sitedz.store/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-primary-400 transition-colors text-sm"
+                  className="text-white hover:text-[#18A999] transition-colors underline"
                 >
                   www.sitedz.store
                 </a>
-              </div>
+                {' '}nous transformons vos idées en expériences numériques puissantes.
+                <br />
+                Nous créons des sites web, des applications mobiles et des solutions digitales sur mesure pour propulser votre entreprise dans le monde connecté d&apos;aujourd&apos;hui.
+              </p>
             </div>
           </div>
         </footer>
