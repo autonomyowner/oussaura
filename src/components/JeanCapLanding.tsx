@@ -68,7 +68,8 @@ export const JeanCapLanding = (): JSX.Element => {
       return
     }
 
-    const total = 2500 + deliveryPrice
+    const homeDeliveryFee = deliveryType === 'home' ? 200 : 0
+    const total = 2500 + deliveryPrice + homeDeliveryFee
     const deliveryTypeText = deliveryType === 'home' ? '🏠 التوصيل للمنزل' : '🏢 التوصيل للمكتب'
     const message = `
 ━━━━━━━━━━━━━━━━━━━━
@@ -95,7 +96,8 @@ export const JeanCapLanding = (): JSX.Element => {
 ━━━━━━━━━━━━━━━━━━━━
 💰 *الفاتورة:*
 السعر: 2500 دج
-التوصيل: ${deliveryPrice} دج
+التوصيل: ${deliveryPrice} دج${homeDeliveryFee > 0 ? `
+التوصيل للمنزل: ${homeDeliveryFee} دج` : ''}
 ━━━━━━━━━━━━━━━━━━━━
 *المجموع الكلي: ${total} دج*
 ━━━━━━━━━━━━━━━━━━━━
@@ -409,6 +411,12 @@ export const JeanCapLanding = (): JSX.Element => {
                     <span>التوصيل إلى {formData.wilaya}:</span>
                     <span className="font-bold text-yellow-400">{deliveryPrice} دج</span>
                   </div>
+                  {deliveryType === 'home' && (
+                    <div className="flex justify-between text-lg mb-2">
+                      <span>التوصيل للمنزل:</span>
+                      <span className="font-bold text-yellow-400">200 دج</span>
+                    </div>
+                  )}
                   {deliveryTime && (
                     <div className="flex justify-between text-sm mb-3 text-gray-300">
                       <span>وقت التوصيل المتوقع:</span>
@@ -417,7 +425,7 @@ export const JeanCapLanding = (): JSX.Element => {
                   )}
                   <div className="border-t-2 border-yellow-400 pt-3 flex justify-between text-2xl font-bold">
                     <span>المجموع:</span>
-                    <span className="text-yellow-400">{2500 + deliveryPrice} دج</span>
+                    <span className="text-yellow-400">{2500 + deliveryPrice + (deliveryType === 'home' ? 200 : 0)} دج</span>
                   </div>
                 </div>
               )}
