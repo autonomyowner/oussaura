@@ -123,19 +123,6 @@ export const JeanCapLanding = (): JSX.Element => {
       <section className="relative py-16 px-4 overflow-hidden bg-[#000000]">
         
         <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="relative w-48 h-24">
-              <Image
-                src="/logo.png"
-                alt="ouss.aura"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-
           {/* Headline */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-yellow-400 chroma-text">
@@ -448,11 +435,6 @@ export const JeanCapLanding = (): JSX.Element => {
       {/* Footer */}
       <footer className="bg-[#000000] py-8 border-t border-[#1a1a1a]">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="relative w-32 h-16">
-              <Image src="/logo.png" alt="ouss.aura" fill className="object-contain" />
-            </div>
-          </div>
           <p className="text-gray-400 text-sm">
             © 2025 ouss.aura - جميع الحقوق محفوظة
           </p>
