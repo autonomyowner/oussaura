@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { getAllWilayasSorted, getPricingByCode } from '@/lib/deliveryPricing'
 
 type OrderModalProps = {
   isOpen: boolean
@@ -10,20 +11,7 @@ type OrderModalProps = {
   productImage: string
 }
 
-const wilayas = [
-  '01 - أدرار', '02 - الشلف', '03 - الأغواط', '04 - أم البواقي', '05 - باتنة',
-  '06 - بجاية', '07 - بسكرة', '08 - بشار', '09 - البليدة', '10 - البويرة',
-  '11 - تمنراست', '12 - تبسة', '13 - تلمسان', '14 - تيارت', '15 - تيزي وزو',
-  '16 - الجزائر', '17 - الجلفة', '18 - جيجل', '19 - سطيف', '20 - سعيدة',
-  '21 - سكيكدة', '22 - سيدي بلعباس', '23 - عنابة', '24 - قالمة', '25 - قسنطينة',
-  '26 - المدية', '27 - مستغانم', '28 - المسيلة', '29 - معسكر', '30 - ورقلة',
-  '31 - وهران', '32 - البيض', '33 - إليزي', '34 - برج بوعريريج', '35 - بومرداس',
-  '36 - الطارف', '37 - تندوف', '38 - تيسمسيلت', '39 - الوادي', '40 - خنشلة',
-  '41 - سوق أهراس', '42 - تيبازة', '43 - ميلة', '44 - عين الدفلى', '45 - النعامة',
-  '46 - عين تموشنت', '47 - غرداية', '48 - غليزان', '49 - تيميمون', '50 - برج باجي مختار',
-  '51 - أولاد جلال', '52 - بني عباس', '53 - عين صالح', '54 - عين قزام', '55 - تقرت',
-  '56 - جانت', '57 - المغير', '58 - المنيعة'
-]
+const wilayasData = getAllWilayasSorted()
 
 export const OrderModal = ({ isOpen, onClose, productName, productImage }: OrderModalProps): JSX.Element | null => {
   const [formData, setFormData] = useState({
@@ -34,6 +22,22 @@ export const OrderModal = ({ isOpen, onClose, productName, productImage }: Order
     deliveryType: 'home'
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [deliveryPrice, setDeliveryPrice] = useState<number>(0)
+  const [deliveryTime, setDeliveryTime] = useState<string>('')
+
+  useEffect(() => {
+    if (formData.wilaya) {
+      const wilayaCode = formData.wilaya.split(' - ')[0]
+      const pricing = getPricingByCode(wilayaCode)
+      if (pricing) {
+        setDeliveryPrice(pricing.price)
+        setDeliveryTime(pricing.deliveryTime)
+      }
+    } else {
+      setDeliveryPrice(0)
+      setDeliveryTime('')
+    }
+  }, [formData.wilaya])
 
   if (!isOpen) return null
 
@@ -69,6 +73,9 @@ export const OrderModal = ({ isOpen, onClose, productName, productImage }: Order
       return
     }
 
+    const productPrice = 3200
+    const totalPrice = productPrice + deliveryPrice
+
     // Create WhatsApp message
     const message = `
 ━━━━━━━━━━━━━━━━━━━━
@@ -79,6 +86,7 @@ export const OrderModal = ({ isOpen, onClose, productName, productImage }: Order
 الولاية: ${formData.wilaya}
 البلدية: ${formData.baladia}
 نوع التوصيل: ${formData.deliveryType === 'home' ? '🏠 المنزل' : '🏢 المكتب'}
+⏱ وقت التوصيل: ${deliveryTime}
 
 ━━━━━━━━━━━━━━━━━━━━
 📦 *المنتج:*
@@ -90,7 +98,11 @@ ${productName}
 الهاتف: ${formData.phone}
 
 ━━━━━━━━━━━━━━━━━━━━
-💰 *السعر: 3200 دج*
+💰 *الفاتورة:*
+السعر: ${productPrice} دج
+التوصيل: ${deliveryPrice} دج
+━━━━━━━━━━━━━━━━━━━━
+*المجموع الكلي: ${totalPrice} دج*
 ━━━━━━━━━━━━━━━━━━━━
     `.trim()
 
@@ -190,13 +202,19 @@ ${productName}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="">اختر الولاية</option>
-                {wilayas.map((wilaya) => (
-                  <option key={wilaya} value={wilaya}>
-                    {wilaya}
+                {wilayasData.map((wilaya) => (
+                  <option key={wilaya.wilayaCode} value={`${wilaya.wilayaCode} - ${wilaya.wilaya}`}>
+                    {wilaya.wilayaCode} - {wilaya.wilaya}
                   </option>
                 ))}
               </select>
               {errors.wilaya && <p className="text-red-500 text-sm mt-1">{errors.wilaya}</p>}
+              {deliveryPrice > 0 && (
+                <p className="text-sm text-gray-600 mt-2">
+                  💰 تكلفة التوصيل: <span className="font-bold text-blue-600">{deliveryPrice} دج</span>
+                  {deliveryTime && ` • ⏱ ${deliveryTime}`}
+                </p>
+              )}
             </div>
 
             {/* Baladia */}
@@ -247,6 +265,33 @@ ${productName}
                 </label>
               </div>
             </div>
+
+            {/* Price Summary */}
+            {formData.wilaya && (
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mt-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">ملخص الطلب</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-gray-700">
+                    <span>سعر المنتج:</span>
+                    <span className="font-semibold">3200 دج</span>
+                  </div>
+                  <div className="flex justify-between text-gray-700">
+                    <span>التوصيل إلى {formData.wilaya.split(' - ')[1]}:</span>
+                    <span className="font-semibold text-blue-600">{deliveryPrice} دج</span>
+                  </div>
+                  {deliveryTime && (
+                    <div className="flex justify-between text-sm text-gray-600">
+                      <span>وقت التوصيل المتوقع:</span>
+                      <span>{deliveryTime}</span>
+                    </div>
+                  )}
+                  <div className="border-t-2 border-blue-300 pt-2 mt-3 flex justify-between text-lg font-bold text-gray-900">
+                    <span>المجموع الكلي:</span>
+                    <span className="text-blue-600">{3200 + deliveryPrice} دج</span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Submit Button */}
             <button

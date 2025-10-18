@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { calculateYalidinePrice } from '@/lib/yalidineApi'
+import { getAllWilayasSorted, getPricingByWilaya } from '@/lib/deliveryPricing'
 import { ImageLightbox } from './ImageLightbox'
 
 const caps = [
@@ -13,56 +13,7 @@ const caps = [
   { id: 5, name: 'قبعة جينز أزرق', image: '/cap/blue.jpg' },
 ]
 
-const wilayas = [
-  { code: '16', name: 'Alger', zone: 'centre' },
-  { code: '09', name: 'Blida', zone: 'centre' },
-  { code: '35', name: 'Boumerdes', zone: 'centre' },
-  { code: '42', name: 'Tipaza', zone: 'centre' },
-  { code: '15', name: 'Tizi Ouzou', zone: 'centre' },
-  { code: '06', name: 'Béjaïa', zone: 'centre' },
-  { code: '10', name: 'Bouira', zone: 'centre' },
-  { code: '26', name: 'Médéa', zone: 'centre' },
-  { code: '31', name: 'Oran', zone: 'ouest' },
-  { code: '27', name: 'Mostaganem', zone: 'ouest' },
-  { code: '29', name: 'Mascara', zone: 'ouest' },
-  { code: '13', name: 'Tlemcen', zone: 'ouest' },
-  { code: '22', name: 'Sidi Bel Abbès', zone: 'ouest' },
-  { code: '02', name: 'Chlef', zone: 'ouest' },
-  { code: '14', name: 'Tiaret', zone: 'ouest' },
-  { code: '48', name: 'Relizane', zone: 'ouest' },
-  { code: '46', name: 'Ain Temouchent', zone: 'ouest' },
-  { code: '25', name: 'Constantine', zone: 'est' },
-  { code: '19', name: 'Sétif', zone: 'est' },
-  { code: '05', name: 'Batna', zone: 'est' },
-  { code: '23', name: 'Annaba', zone: 'est' },
-  { code: '18', name: 'Jijel', zone: 'est' },
-  { code: '21', name: 'Skikda', zone: 'est' },
-  { code: '24', name: 'Guelma', zone: 'est' },
-  { code: '43', name: 'Mila', zone: 'est' },
-  { code: '04', name: 'Oum El Bouaghi', zone: 'est' },
-  { code: '41', name: 'Souk Ahras', zone: 'est' },
-  { code: '12', name: 'Tébessa', zone: 'est' },
-  { code: '40', name: 'Khenchela', zone: 'est' },
-  { code: '34', name: 'Bordj Bou Arreridj', zone: 'est' },
-  { code: '28', name: 'M\'Sila', zone: 'est' },
-  { code: '07', name: 'Biskra', zone: 'sud' },
-  { code: '17', name: 'Djelfa', zone: 'sud' },
-  { code: '03', name: 'Laghouat', zone: 'sud' },
-  { code: '47', name: 'Ghardaïa', zone: 'sud' },
-  { code: '30', name: 'Ouargla', zone: 'sud' },
-  { code: '01', name: 'Adrar', zone: 'sud' },
-  { code: '08', name: 'Béchar', zone: 'sud' },
-  { code: '11', name: 'Tamanrasset', zone: 'sud' },
-  { code: '32', name: 'El Bayadh', zone: 'sud' },
-  { code: '33', name: 'Illizi', zone: 'sud' },
-  { code: '36', name: 'El Tarf', zone: 'est' },
-  { code: '37', name: 'Tindouf', zone: 'sud' },
-  { code: '38', name: 'Tissemsilt', zone: 'ouest' },
-  { code: '39', name: 'El Oued', zone: 'sud' },
-  { code: '44', name: 'Ain Defla', zone: 'centre' },
-  { code: '45', name: 'Naâma', zone: 'sud' },
-  { code: '20', name: 'Saïda', zone: 'ouest' },
-]
+const wilayasData = getAllWilayasSorted()
 
 export const JeanCapLanding = (): JSX.Element => {
   const [selectedCap1, setSelectedCap1] = useState(caps[0])
@@ -74,23 +25,21 @@ export const JeanCapLanding = (): JSX.Element => {
     commune: '',
     address: '',
   })
-  const [deliveryPrice, setDeliveryPrice] = useState<number | null>(null)
-  const [isCalculating, setIsCalculating] = useState(false)
+  const [deliveryPrice, setDeliveryPrice] = useState<number>(0)
+  const [deliveryTime, setDeliveryTime] = useState<string>('')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
 
   useEffect(() => {
     if (formData.wilaya) {
-      setIsCalculating(true)
-      calculateYalidinePrice(formData.wilaya)
-        .then(price => {
-          setDeliveryPrice(price)
-          setIsCalculating(false)
-        })
-        .catch(() => {
-          setDeliveryPrice(null)
-          setIsCalculating(false)
-        })
+      const pricing = getPricingByWilaya(formData.wilaya)
+      if (pricing) {
+        setDeliveryPrice(pricing.price)
+        setDeliveryTime(pricing.deliveryTime)
+      }
+    } else {
+      setDeliveryPrice(0)
+      setDeliveryTime('')
     }
   }, [formData.wilaya])
 
@@ -118,7 +67,7 @@ export const JeanCapLanding = (): JSX.Element => {
       return
     }
 
-    const total = 2500 + (deliveryPrice || 0)
+    const total = 2500 + deliveryPrice
     const message = `
 ━━━━━━━━━━━━━━━━━━━━
 🎩 *طلب جديد - CASQUETTE JEAN*
@@ -128,6 +77,7 @@ export const JeanCapLanding = (): JSX.Element => {
 الولاية: ${formData.wilaya}
 البلدية: ${formData.commune}
 العنوان: ${formData.address}
+⏱ وقت التوصيل: ${deliveryTime}
 
 ━━━━━━━━━━━━━━━━━━━━
 📦 *المنتجات:*
@@ -142,7 +92,7 @@ export const JeanCapLanding = (): JSX.Element => {
 ━━━━━━━━━━━━━━━━━━━━
 💰 *الفاتورة:*
 السعر: 2500 دج
-التوصيل: ${deliveryPrice || 0} دج
+التوصيل: ${deliveryPrice} دج
 ━━━━━━━━━━━━━━━━━━━━
 *المجموع الكلي: ${total} دج*
 ━━━━━━━━━━━━━━━━━━━━
@@ -378,9 +328,9 @@ export const JeanCapLanding = (): JSX.Element => {
                   className="w-full px-4 py-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-white"
                 >
                   <option value="">اختر الولاية</option>
-                  {wilayas.map((w) => (
-                    <option key={w.code} value={w.name}>
-                      {w.code} - {w.name}
+                  {wilayasData.map((w) => (
+                    <option key={w.wilayaCode} value={w.wilaya}>
+                      {w.wilayaCode} - {w.wilaya}
                     </option>
                   ))}
                 </select>
@@ -416,18 +366,22 @@ export const JeanCapLanding = (): JSX.Element => {
               </div>
 
               {/* Price Summary */}
-              {deliveryPrice !== null && (
+              {formData.wilaya && (
                 <div className="bg-yellow-400/10 border-2 border-yellow-400 rounded-lg p-6">
                   <div className="flex justify-between text-lg mb-2">
                     <span>السعر (قبعتان):</span>
                     <span className="font-bold">2500 دج</span>
                   </div>
-                  <div className="flex justify-between text-lg mb-3">
+                  <div className="flex justify-between text-lg mb-2">
                     <span>التوصيل إلى {formData.wilaya}:</span>
-                    <span className="font-bold text-yellow-400">
-                      {isCalculating ? '...' : `${deliveryPrice} دج`}
-                    </span>
+                    <span className="font-bold text-yellow-400">{deliveryPrice} دج</span>
                   </div>
+                  {deliveryTime && (
+                    <div className="flex justify-between text-sm mb-3 text-gray-300">
+                      <span>وقت التوصيل المتوقع:</span>
+                      <span>{deliveryTime}</span>
+                    </div>
+                  )}
                   <div className="border-t-2 border-yellow-400 pt-3 flex justify-between text-2xl font-bold">
                     <span>المجموع:</span>
                     <span className="text-yellow-400">{2500 + deliveryPrice} دج</span>
